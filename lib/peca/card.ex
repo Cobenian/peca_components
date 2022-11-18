@@ -2,14 +2,16 @@ defmodule Peca.Card do
   use PecaComponent,
     defaults_for: :card,
     opts: [
-      spacing: "px-4",
-      sizing: "h-10",
+      spacing: "",
+      sizing: "",
       typography: "",
-      background: "transparent",
+      background: "",
       borders: "border",
-      rounded: "rounded-md",
-      states: "hover:opacity-75"
+      rounded: "rounded-lg",
+      states: "drop-shadow-lg"
     ]
+
+  # stardard attrs
 
   attr(:sizing, :string,
     default: @sizing_default,
@@ -40,29 +42,24 @@ defmodule Peca.Card do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
+  # custom attrs
+
+  attr(:header_class, :string, default: "", doc: "CSS class(es) for header.")
+  attr(:content_class, :string, default: "p-4", doc: "CSS class(es) for content.")
+  attr(:footer_class, :string, default: "", doc: "CSS class(es) for footer.")
+
+  slot(:header)
   slot(:inner_block)
+  slot(:footer)
 
   def card(assigns) do
-    assigns =
-      case Map.get(assigns, :class) do
-        nil ->
-          assigns
-          |> extend_class(assigns.spacing, prefix_replace: false)
-          |> extend_class(assigns.sizing, prefix_replace: false)
-          |> extend_class(assigns.typography, prefix_replace: false)
-          |> extend_class(assigns.background, prefix_replace: false)
-          |> extend_class(assigns.borders, prefix_replace: false)
-          |> extend_class(assigns.rounded, prefix_replace: false)
-          |> extend_class(assigns.states, prefix_replace: false)
-          |> extend_class(assigns.custom_class, prefix_replace: false)
-
-        _ ->
-          assigns
-      end
+    assigns = handle_class_assigns(assigns)
 
     ~H"""
     <div class={@class}>
-      <%= render_slot(@inner_block) %>
+        <div class={@header_class}><%= render_slot(@header) %></div>
+        <div class={@content_class}><%= render_slot(@inner_block) %></div>
+        <div class={@footer_class}><%= render_slot(@footer) %></div>
     </div>
     """
   end

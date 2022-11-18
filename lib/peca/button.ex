@@ -17,10 +17,7 @@ defmodule Peca.Button do
                          "Click Me"
                        )
 
-  attr(:button_text, :string,
-    default: @button_text_default,
-    doc: "Button text. Used only if the button content (inner_block) is empty."
-  )
+  # standard attrs
 
   attr(:sizing, :string,
     default: @sizing_default,
@@ -51,25 +48,17 @@ defmodule Peca.Button do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
+  # custom attrs
+
+  attr(:button_text, :string,
+    default: @button_text_default,
+    doc: "Button text. Used only if the button content (inner_block) is empty."
+  )
+
   slot(:inner_block)
 
   def button(assigns) do
-    assigns =
-      case Map.get(assigns, :class) do
-        nil ->
-          assigns
-          |> extend_class(assigns.spacing, prefix_replace: false)
-          |> extend_class(assigns.sizing, prefix_replace: false)
-          |> extend_class(assigns.typography, prefix_replace: false)
-          |> extend_class(assigns.background, prefix_replace: false)
-          |> extend_class(assigns.borders, prefix_replace: false)
-          |> extend_class(assigns.rounded, prefix_replace: false)
-          |> extend_class(assigns.states, prefix_replace: false)
-          |> extend_class(assigns.custom_class, prefix_replace: false)
-
-        _ ->
-          assigns
-      end
+    assigns = handle_class_assigns(assigns)
 
     ~H"""
     <button class={@class}>

@@ -41,6 +41,24 @@ defmodule PecaComponent do
                         [:defaults, unquote(component), :states],
                         unquote(opts[:states])
                       )
+
+      defp handle_class_assigns(assigns) do
+        case Map.get(assigns, :class) do
+          nil ->
+            assigns
+            |> extend_class(assigns.spacing, prefix_replace: false)
+            |> extend_class(assigns.sizing, prefix_replace: false)
+            |> extend_class(assigns.typography, prefix_replace: false)
+            |> extend_class(assigns.background, prefix_replace: false)
+            |> extend_class(assigns.borders, prefix_replace: false)
+            |> extend_class(assigns.rounded, prefix_replace: false)
+            |> extend_class(assigns.states, prefix_replace: false)
+            |> extend_class(assigns.custom_class, prefix_replace: false)
+
+          _ ->
+            assigns
+        end
+      end
     end
   end
 end
