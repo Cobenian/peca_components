@@ -19,3 +19,17 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/peca_components>.
 
+## Override default styling:
+
+config :peca_components, 
+    defaults: [
+        button: [
+            padding: "px-4 py-2",
+            rounded: "rounded-md",
+            size: nil,
+            button_color: "transparent",
+            text_color: "gray-700",
+            border: "border",
+            hover: "hover:opacity-75"
+        ]
+    ]
