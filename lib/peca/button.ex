@@ -49,46 +49,57 @@ defmodule Peca.Button do
 
   attr(:button_text, :string,
     default: @button_text_default,
-    doc: "Button text. Only used if the button content is empty."
+    doc: "Button text. Used only if the button content (inner_block) is empty."
   )
 
   attr(:sizing, :string,
     default: @sizing_default,
-    doc: "Standard sizes for the button. Sets h-* and w-* classes. Optional."
+    doc:
+      "Sets h-* and w-* classes. Optional. Recommend setting height and NOT width so it can adjust according to the text/content."
   )
 
-  attr(:spacing, :string, default: @spacing_default, doc: "CSS spacing class(es) for the button.")
+  attr(:spacing, :string, default: @spacing_default, doc: "CSS spacing class(es).")
 
-  attr(:rounded, :string, default: @rounded_default, doc: "CSS rounding class(es) for the button.")
+  attr(:rounded, :string, default: @rounded_default, doc: "CSS rounded class(es).")
 
   attr(:background, :string,
     default: @background_default,
-    doc: "CSS button background color class(es) for the button."
+    doc: "CSS button background class(es)."
   )
 
   attr(:typography, :string,
     default: @typography_default,
-    doc: "CSS button text color class(es) for the button."
+    doc: "CSS button text class(es)."
   )
 
-  attr(:borders, :string, default: @borders_default, doc: "CSS border class(es) for the button.")
-  attr(:states, :string, default: @states_default, doc: "CSS hover class(es) for the button.")
+  attr(:borders, :string, default: @borders_default, doc: "CSS border class(es).")
 
-  attr(:button_class, :string, default: "", doc: "CSS class to add to the button.")
+  attr(:states, :string,
+    default: @states_default,
+    doc: "CSS states class(es) [hover, focus, etc.]."
+  )
+
+  attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
   slot(:inner_block)
 
   def button(assigns) do
     assigns =
-      assigns
-      |> extend_class(assigns.spacing, prefix_replace: false)
-      |> extend_class(assigns.sizing, prefix_replace: false)
-      |> extend_class(assigns.typography, prefix_replace: false)
-      |> extend_class(assigns.background, prefix_replace: false)
-      |> extend_class(assigns.borders, prefix_replace: false)
-      |> extend_class(assigns.rounded, prefix_replace: false)
-      |> extend_class(assigns.states, prefix_replace: false)
-      |> extend_class(assigns.button_class, prefix_replace: false)
+      case Map.get(assigns, :class) do
+        nil ->
+          assigns
+          |> extend_class(assigns.spacing, prefix_replace: false)
+          |> extend_class(assigns.sizing, prefix_replace: false)
+          |> extend_class(assigns.typography, prefix_replace: false)
+          |> extend_class(assigns.background, prefix_replace: false)
+          |> extend_class(assigns.borders, prefix_replace: false)
+          |> extend_class(assigns.rounded, prefix_replace: false)
+          |> extend_class(assigns.states, prefix_replace: false)
+          |> extend_class(assigns.custom_class, prefix_replace: false)
+
+        _ ->
+          assigns
+      end
 
     ~H"""
     <button class={@class}>
