@@ -1,6 +1,6 @@
-defmodule Peca.Button do
+defmodule Peca.Card do
   use PecaComponent,
-    defaults_for: :button,
+    defaults_for: :card,
     opts: [
       spacing: "px-4",
       sizing: "h-10",
@@ -10,17 +10,6 @@ defmodule Peca.Button do
       rounded: "rounded-md",
       states: "hover:opacity-75"
     ]
-
-  @button_text_default Application.compile_env(
-                         :peca_components,
-                         [:defaults, :button, :button_text],
-                         "Click Me"
-                       )
-
-  attr(:button_text, :string,
-    default: @button_text_default,
-    doc: "Button text. Used only if the button content (inner_block) is empty."
-  )
 
   attr(:sizing, :string,
     default: @sizing_default,
@@ -53,7 +42,7 @@ defmodule Peca.Button do
 
   slot(:inner_block)
 
-  def button(assigns) do
+  def card(assigns) do
     assigns =
       case Map.get(assigns, :class) do
         nil ->
@@ -72,9 +61,9 @@ defmodule Peca.Button do
       end
 
     ~H"""
-    <button class={@class}>
-      <%= render_slot(@inner_block) || @button_text %>
-    </button>
+    <div class={@class}>
+      <%= render_slot(@inner_block) %>
+    </div>
     """
   end
 end
