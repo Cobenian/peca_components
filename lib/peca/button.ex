@@ -32,7 +32,7 @@ defmodule Peca.Button do
   @rounded_default Application.compile_env(
                      :peca_components,
                      [:defaults, :button, :rounded],
-                     "rounded"
+                     "rounded-md"
                    )
 
   @states_default Application.compile_env(
