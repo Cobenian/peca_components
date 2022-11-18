@@ -3,61 +3,76 @@ defmodule Peca.Button do
 
   import PhxComponentHelpers
 
-  @padding_default Application.compile_env(
+  @spacing_default Application.compile_env(
                      :peca_components,
-                     [:defaults, :button, :padding],
-                     "px-4 py-2"
+                     [:defaults, :button, :spacing],
+                     "px-4"
                    )
+  @sizing_default Application.compile_env(
+                    :peca_components,
+                    [:defaults, :button, :sizing],
+                    "h-10"
+                  )
+  @typography_default Application.compile_env(
+                        :peca_components,
+                        [:defaults, :button, :typography],
+                        ""
+                      )
+  @background_default Application.compile_env(
+                        :peca_components,
+                        [:defaults, :button, :background],
+                        "transparent"
+                      )
+  @borders_default Application.compile_env(
+                     :peca_components,
+                     [:defaults, :button, :borders],
+                     "border"
+                   )
+
   @rounded_default Application.compile_env(
                      :peca_components,
                      [:defaults, :button, :rounded],
                      "rounded"
                    )
-  @button_color_default Application.compile_env(
-                          :peca_components,
-                          [:defaults, :button, :button_color],
-                          "transparent"
-                        )
+
+  @states_default Application.compile_env(
+                    :peca_components,
+                    [:defaults, :button, :states],
+                    "hover:opacity-75"
+                  )
+
   @button_text_default Application.compile_env(
                          :peca_components,
-                         [:defaults, :button, :text_color],
+                         [:defaults, :button, :button_text],
                          "Click Me"
                        )
-  @border_default Application.compile_env(
-                    :peca_components,
-                    [:defaults, :button, :border],
-                    "border"
-                  )
-  @hover_default Application.compile_env(
-                   :peca_components,
-                   [:defaults, :button, :hover],
-                   "hover:opacity-75"
-                 )
 
-  attr(:button_text, :string, doc: "Button text. Only used if the button content is empty.")
-
-  attr(:size, :string,
-    values: ["xs", "sm", "md", "lg", "xl", "2xl"],
-    default: "md",
-    doc: "Standard sizes for the button. (xs|sm|md|lg|xl|2xl) Default is 'md'. Optional."
+  attr(:button_text, :string,
+    default: @button_text_default,
+    doc: "Button text. Only used if the button content is empty."
   )
 
-  attr(:padding, :string, default: @padding_default, doc: "CSS padding class(es) for the button.")
+  attr(:sizing, :string,
+    default: @sizing_default,
+    doc: "Standard sizes for the button. Sets h-* and w-* classes. Optional."
+  )
+
+  attr(:spacing, :string, default: @spacing_default, doc: "CSS spacing class(es) for the button.")
 
   attr(:rounded, :string, default: @rounded_default, doc: "CSS rounding class(es) for the button.")
 
-  attr(:button_color, :string,
-    default: @button_color_default,
+  attr(:background, :string,
+    default: @background_default,
     doc: "CSS button background color class(es) for the button."
   )
 
-  attr(:text_color, :string,
-    default: @button_text_default,
+  attr(:typography, :string,
+    default: @typography_default,
     doc: "CSS button text color class(es) for the button."
   )
 
-  attr(:border, :string, default: @border_default, doc: "CSS border class(es) for the button.")
-  attr(:hover, :string, default: @hover_default, doc: "CSS hover class(es) for the button.")
+  attr(:borders, :string, default: @borders_default, doc: "CSS border class(es) for the button.")
+  attr(:states, :string, default: @states_default, doc: "CSS hover class(es) for the button.")
 
   attr(:button_class, :string, default: "", doc: "CSS class to add to the button.")
 
@@ -66,13 +81,13 @@ defmodule Peca.Button do
   def button(assigns) do
     assigns =
       assigns
-      |> extend_class(assigns.border, prefix_replace: false)
-      |> extend_class(assigns.hover, prefix_replace: false)
+      |> extend_class(assigns.spacing, prefix_replace: false)
+      |> extend_class(assigns.sizing, prefix_replace: false)
+      |> extend_class(assigns.typography, prefix_replace: false)
+      |> extend_class(assigns.background, prefix_replace: false)
+      |> extend_class(assigns.borders, prefix_replace: false)
       |> extend_class(assigns.rounded, prefix_replace: false)
-      |> extend_class(assigns.padding, prefix_replace: false)
-      |> extend_class("text-" <> assigns.size, prefix_replace: false)
-      |> extend_class("bg-" <> assigns.button_color, prefix_replace: false)
-      |> extend_class("text-" <> assigns.text_color, prefix_replace: false)
+      |> extend_class(assigns.states, prefix_replace: false)
       |> extend_class(assigns.button_class, prefix_replace: false)
 
     ~H"""

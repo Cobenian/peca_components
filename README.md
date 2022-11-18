@@ -24,12 +24,14 @@ be found at <https://hexdocs.pm/peca_components>.
 config :peca_components, 
     defaults: [
         button: [
-            padding: "px-4 py-2",
+            spacing: "px-4 py-2",
+            sizing: "w-6 h-6",
+            typography: "text-gray-700",
+            background: "transparent",
+            borders: "border",
             rounded: "rounded-md",
-            size: nil,
-            button_color: "transparent",
-            text_color: "gray-700",
-            border: "border",
-            hover: "hover:opacity-75"
+            states: "hover:opacity-75",
+
+            button_text: "Click Me"
         ]
     ]
