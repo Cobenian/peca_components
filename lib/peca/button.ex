@@ -70,6 +70,7 @@ defmodule Peca.Button do
     assigns =
       assigns
       |> handle_class_assigns()
+
     #   |> assign_rest(standard_class_excludes_plus: [:button_text])
 
     ~H"""

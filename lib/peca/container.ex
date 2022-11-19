@@ -45,7 +45,8 @@ defmodule Peca.Container do
     assigns =
       assigns
       |> handle_class_assigns()
-      # |> assign_rest(:standard_class_excludes)
+
+    # |> assign_rest(:standard_class_excludes)
 
     ~H"""
     <div class={@class} {@rest}>

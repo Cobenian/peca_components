@@ -93,33 +93,33 @@ defmodule PecaComponent do
         end
       end
 
-    #   defp assign_rest(assigns, :standard_class_excludes) do
-    #     assign_rest(assigns, exclude: standard_exclude_class_attrs())
-    #   end
+      #   defp assign_rest(assigns, :standard_class_excludes) do
+      #     assign_rest(assigns, exclude: standard_exclude_class_attrs())
+      #   end
 
-    #   defp assign_rest(assigns, standard_class_excludes_plus: exclude) when is_atom(exclude) do
-    #     assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ [exclude])
-    #   end
+      #   defp assign_rest(assigns, standard_class_excludes_plus: exclude) when is_atom(exclude) do
+      #     assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ [exclude])
+      #   end
 
-    #   defp assign_rest(assigns, standard_class_excludes_plus: excludes) when is_list(excludes) do
-    #     assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ excludes)
-    #   end
+      #   defp assign_rest(assigns, standard_class_excludes_plus: excludes) when is_list(excludes) do
+      #     assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ excludes)
+      #   end
 
-    #   defp assign_rest(assigns, exclude: nil) do
-    #     assign_rest(assigns, exclude: [])
-    #   end
+      #   defp assign_rest(assigns, exclude: nil) do
+      #     assign_rest(assigns, exclude: [])
+      #   end
 
-    #   defp assign_rest(assigns, exclude: exclude) when is_atom(exclude) do
-    #     assign_rest(assigns, exclude: [exclude])
-    #   end
+      #   defp assign_rest(assigns, exclude: exclude) when is_atom(exclude) do
+      #     assign_rest(assigns, exclude: [exclude])
+      #   end
 
-    #   defp assign_rest(assigns, exclude: excludes) when is_list(excludes) do
-    #     Phoenix.Component.assign(
-    #       assigns,
-    #       :rest,
-    #       Phoenix.Component.assigns_to_attributes(assigns, excludes)
-    #     )
-    #   end
+      #   defp assign_rest(assigns, exclude: excludes) when is_list(excludes) do
+      #     Phoenix.Component.assign(
+      #       assigns,
+      #       :rest,
+      #       Phoenix.Component.assigns_to_attributes(assigns, excludes)
+      #     )
+      #   end
     end
   end
 end
