@@ -11,7 +11,7 @@ defmodule Peca.Card do
       states: "drop-shadow-lg"
     ]
 
-  # stardard attrs
+  # stardard class attrs
 
   attr(:sizing, :string,
     default: @sizing_default,
@@ -53,10 +53,13 @@ defmodule Peca.Card do
   slot(:footer)
 
   def card(assigns) do
-    assigns = handle_class_assigns(assigns)
+    assigns = 
+        assigns
+        |> handle_class_assigns()
+        |> assign_rest(standard_class_exludes_plus: [:header_class, :content_class, :footer_class])
 
     ~H"""
-    <div class={@class}>
+    <div class={@class} {@rest}>
         <div class={@header_class}><%= render_slot(@header) %></div>
         <div class={@content_class}><%= render_slot(@inner_block) %></div>
         <div class={@footer_class}><%= render_slot(@footer) %></div>
