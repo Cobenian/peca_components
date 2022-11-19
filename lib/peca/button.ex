@@ -67,8 +67,6 @@ defmodule Peca.Button do
   slot(:inner_block, doc: "Content of the button.")
 
   def button(assigns) do
-    IO.puts("button assigns: #{inspect(assigns, pretty: true)}")
-
     assigns =
       assigns
       |> handle_class_assigns()
