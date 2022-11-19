@@ -8,7 +8,9 @@ defmodule Peca.Card do
       background: "",
       borders: "border",
       rounded: "rounded-lg",
-      states: "drop-shadow-lg"
+      states: "drop-shadow-lg",
+      layout: "",
+      placement: ""
     ]
 
   # stardard class attrs
@@ -38,6 +40,13 @@ defmodule Peca.Card do
   attr(:states, :string,
     default: @states_default,
     doc: "CSS states class(es) [hover, focus, etc.]."
+  )
+
+  attr(:layout, :string, default: @layout_default, doc: "CSS layout class(es)")
+
+  attr(:placement, :string,
+    default: @placement_default,
+    doc: "CSS placement class(es) [flexbox, grid]"
   )
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")

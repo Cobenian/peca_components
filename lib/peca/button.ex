@@ -8,7 +8,9 @@ defmodule Peca.Button do
       background: "transparent",
       borders: "border",
       rounded: "rounded-md",
-      states: "hover:opacity-75"
+      states: "hover:opacity-75",
+      layout: "",
+      placement: ""
     ]
 
   @button_text_default Application.compile_env(
@@ -44,6 +46,13 @@ defmodule Peca.Button do
   attr(:states, :string,
     default: @states_default,
     doc: "CSS states class(es) [hover, focus, etc.]."
+  )
+
+  attr(:layout, :string, default: @layout_default, doc: "CSS layout class(es)")
+
+  attr(:placement, :string,
+    default: @placement_default,
+    doc: "CSS placement class(es) [flexbox, grid]"
   )
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
