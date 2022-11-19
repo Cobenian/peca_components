@@ -73,19 +73,27 @@ defmodule PecaComponent do
         end
       end
 
-      defp assign_rest(assigns, :standard_class_exludes) do
-        assign_rest(assigns, standard_exclude_class_attrs())
+      defp assign_rest(assigns, :standard_class_excludes) do
+        assign_rest(assigns, exclude: standard_exclude_class_attrs())
       end
 
-      defp assign_rest(assigns, standard_class_exludes_plus: exclude) when is_atom(exclude) do
-        assign_rest(assigns, standard_class_exludes_plus: [exclude])
+      defp assign_rest(assigns, standard_class_excludes_plus: exclude) when is_atom(exclude) do
+        assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ [exclude])
       end
 
-      defp assign_rest(assigns, standard_class_exludes_plus: excludes) do
-        assign_rest(assigns, standard_exclude_class_attrs() + excludes)
+      defp assign_rest(assigns, standard_class_excludes_plus: excludes) when is_list(excludes) do
+        assign_rest(assigns, exclude: standard_exclude_class_attrs() ++ excludes)
       end
 
-      defp assign_rest(assigns, exclude: excludes) do
+      defp assign_rest(assigns, exclude: nil) do
+        assign_rest(assigns, exclude: [])
+      end
+
+      defp assign_rest(assigns, exclude: exclude) when is_atom(exclude) do
+        assign_rest(assigns, exclude: [exclude])
+      end
+
+      defp assign_rest(assigns, exclude: excludes) when is_list(excludes) do
         Phoenix.Component.assign(
           assigns,
           :rest,
