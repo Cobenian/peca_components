@@ -42,6 +42,18 @@ defmodule PecaComponent do
                         unquote(opts[:states])
                       )
 
+      @layout_default Application.compile_env(
+                        :peca_components,
+                        [:defaults, unquote(component), :layout],
+                        unquote(opts[:layout])
+                      )
+
+      @placement_default Application.compile_env(
+                           :peca_components,
+                           [:defaults, unquote(component), :placement],
+                           unquote(opts[:placement])
+                         )
+
       defp standard_class_attrs() do
         [
           :sizing,
@@ -51,6 +63,8 @@ defmodule PecaComponent do
           :typography,
           :borders,
           :states,
+          :layout,
+          :placement,
           :custom_class
         ]
       end
