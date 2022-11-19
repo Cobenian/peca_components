@@ -61,15 +61,15 @@ defmodule Peca.Card do
     assigns =
       assigns
       |> handle_class_assigns()
-      |> assign_rest(
-        standard_class_excludes_plus: [
-          :header,
-          :footer,
-          :header_class,
-          :content_class,
-          :footer_class
-        ]
-      )
+    #   |> assign_rest(
+    #     standard_class_excludes_plus: [
+    #       :header,
+    #       :footer,
+    #       :header_class,
+    #       :content_class,
+    #       :footer_class
+    #     ]
+    #   )
 
     ~H"""
     <div class={@class} {@rest}>
