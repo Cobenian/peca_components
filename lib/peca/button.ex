@@ -58,10 +58,10 @@ defmodule Peca.Button do
   slot(:inner_block)
 
   def button(assigns) do
-    assigns = 
-        assigns
-        |> handle_class_assigns()
-        |> assign_rest(standard_class_exludes_plus: [:button_text])
+    assigns =
+      assigns
+      |> handle_class_assigns()
+      |> assign_rest(standard_class_exludes_plus: [:button_text])
 
     ~H"""
     <button class={@class} {@rest}>

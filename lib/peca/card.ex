@@ -53,10 +53,10 @@ defmodule Peca.Card do
   slot(:footer)
 
   def card(assigns) do
-    assigns = 
-        assigns
-        |> handle_class_assigns()
-        |> assign_rest(standard_class_exludes_plus: [:header_class, :content_class, :footer_class])
+    assigns =
+      assigns
+      |> handle_class_assigns()
+      |> assign_rest(standard_class_exludes_plus: [:header_class, :content_class, :footer_class])
 
     ~H"""
     <div class={@class} {@rest}>
