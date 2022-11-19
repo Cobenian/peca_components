@@ -78,8 +78,14 @@ defmodule PecaComponent do
           nil ->
             standard_class_attrs()
             |> Enum.reduce(assigns, fn attr, acc ->
-              acc
-              |> extend_class(acc[attr], prefix_replace: false)
+              case acc[attr] do
+                nil ->
+                  acc
+
+                cls ->
+                  acc
+                  |> extend_class(cls, prefix_replace: false)
+              end
             end)
 
           _ ->

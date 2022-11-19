@@ -8,9 +8,7 @@ defmodule Peca.Button do
       background: "transparent",
       borders: "border",
       rounded: "rounded-md",
-      states: "hover:opacity-75",
-      layout: "",
-      placement: ""
+      states: "hover:opacity-75"
     ]
 
   @button_text_default Application.compile_env(
@@ -64,7 +62,7 @@ defmodule Peca.Button do
     doc: "Button text. Used only if the button content (inner_block) is empty."
   )
 
-  slot(:inner_block)
+  slot(:inner_block, doc: "The content of the button.")
 
   def button(assigns) do
     assigns =

@@ -2,15 +2,9 @@ defmodule Peca.Card do
   use PecaComponent,
     defaults_for: :card,
     opts: [
-      spacing: "",
-      sizing: "",
-      typography: "",
-      background: "",
       borders: "border",
       rounded: "rounded-lg",
-      states: "drop-shadow-lg",
-      layout: "",
-      placement: ""
+      states: "drop-shadow-lg"
     ]
 
   # stardard class attrs

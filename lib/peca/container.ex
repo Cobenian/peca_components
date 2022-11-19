@@ -1,17 +1,7 @@
 defmodule Peca.Container do
   use PecaComponent,
     defaults_for: :container,
-    opts: [
-      spacing: "",
-      sizing: "",
-      typography: "",
-      background: "",
-      borders: "",
-      rounded: "",
-      states: "",
-      layout: "",
-      placement: ""
-    ]
+    opts: []
 
   # stardard class attrs
 
