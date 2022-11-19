@@ -63,7 +63,7 @@ defmodule Peca.Card do
       |> handle_class_assigns()
 
     ~H"""
-    <div class={@class} {@rest}>
+    <div class={@rest[:class] || @class} {@rest}>
         <div class={@header_class}><%= render_slot(@header) %></div>
         <div class={@content_class}><%= render_slot(@inner_block) %></div>
         <div class={@footer_class}><%= render_slot(@footer) %></div>

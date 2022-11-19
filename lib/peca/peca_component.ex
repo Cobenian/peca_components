@@ -74,7 +74,7 @@ defmodule PecaComponent do
       end
 
       defp handle_class_assigns(assigns) do
-        case Map.get(assigns, :class) do
+        case Map.get(Map.get(assigns, :rest, %{}), :class) do
           nil ->
             standard_class_attrs()
             |> Enum.reduce(assigns, fn attr, acc ->

@@ -47,7 +47,7 @@ defmodule Peca.Container do
       |> handle_class_assigns()
 
     ~H"""
-    <div class={@class} {@rest}>
+    <div class={@rest[:class] || @class} {@rest}>
         <%= render_slot(@inner_block) %>
     </div>
     """
