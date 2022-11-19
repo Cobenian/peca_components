@@ -39,14 +39,12 @@ defmodule Peca.Container do
 
   # custom attrs
 
-  slot(:inner_block)
+  slot(:inner_block, doc: "Content of the container.")
 
   def container(assigns) do
     assigns =
       assigns
       |> handle_class_assigns()
-
-    # |> assign_rest(:standard_class_excludes)
 
     ~H"""
     <div class={@class} {@rest}>

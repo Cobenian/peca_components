@@ -53,24 +53,14 @@ defmodule Peca.Card do
   attr(:content_class, :string, default: "p-4", doc: "CSS class(es) for content.")
   attr(:footer_class, :string, default: "", doc: "CSS class(es) for footer.")
 
-  slot(:header)
-  slot(:inner_block)
-  slot(:footer)
+  slot(:header, doc: "Optional header block.")
+  slot(:inner_block, doc: "Content of the card.")
+  slot(:footer, doc: "Optional footer block.")
 
   def card(assigns) do
     assigns =
       assigns
       |> handle_class_assigns()
-
-    #   |> assign_rest(
-    #     standard_class_excludes_plus: [
-    #       :header,
-    #       :footer,
-    #       :header_class,
-    #       :content_class,
-    #       :footer_class
-    #     ]
-    #   )
 
     ~H"""
     <div class={@class} {@rest}>

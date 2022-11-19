@@ -64,14 +64,12 @@ defmodule Peca.Button do
     doc: "Button text. Used only if the button content (inner_block) is empty."
   )
 
-  slot(:inner_block, doc: "The content of the button.")
+  slot(:inner_block, doc: "Content of the button.")
 
   def button(assigns) do
     assigns =
       assigns
       |> handle_class_assigns()
-
-    #   |> assign_rest(standard_class_excludes_plus: [:button_text])
 
     ~H"""
     <button class={@class} {@rest}>
