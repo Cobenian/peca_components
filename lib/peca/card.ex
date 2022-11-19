@@ -45,6 +45,8 @@ defmodule Peca.Card do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
+  attr(:rest, :global)
+
   # custom attrs
 
   attr(:header_class, :string, default: "text-xl font-bold", doc: "CSS class(es) for header.")

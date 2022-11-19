@@ -35,6 +35,8 @@ defmodule Peca.Container do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
+  attr(:rest, :global)
+
   # custom attrs
 
   slot(:inner_block)

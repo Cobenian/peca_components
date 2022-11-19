@@ -55,6 +55,8 @@ defmodule Peca.Button do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
+  attr(:rest, :global)
+
   # custom attrs
 
   attr(:button_text, :string,
