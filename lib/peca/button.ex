@@ -4,7 +4,6 @@ defmodule Peca.Button do
     opts: [
       spacing: "px-4",
       sizing: "h-10",
-      typography: "",
       background: "transparent",
       borders: "border",
       rounded: "rounded-md",
@@ -55,7 +54,7 @@ defmodule Peca.Button do
 
   attr(:custom_class, :string, default: "", doc: "Additional CSS class(es) for customization.")
 
-  attr(:rest, :global)
+  attr(:rest, :global, include: ~w(form type))
 
   # custom attrs
 
