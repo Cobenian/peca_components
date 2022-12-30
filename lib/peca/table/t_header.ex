@@ -1,5 +1,6 @@
 defmodule PecaComponent.Table.THeader do
-  use PecaComponent, :functional
+  use Phoenix.Component
+  # use PecaComponent, :functional
 
   import PecaComponent.Table.TCell
 

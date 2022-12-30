@@ -1,5 +1,5 @@
 defmodule PecaComponent.Table.Table do
-  use PecaComponent, :live
+  use Phoenix.LiveComponent
 
   alias PecaComponent.Table.TableHeader
   alias PecaComponent.Table.TableRow

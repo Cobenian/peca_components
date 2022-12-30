@@ -1,5 +1,6 @@
 defmodule PecaComponent.Table.TCell do
-  use PecaComponent, :functional
+  use Phoenix.Component
+  # use PecaComponent, :functional
 
   def table_cell(assigns) do
     assigns =

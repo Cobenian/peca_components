@@ -1,5 +1,5 @@
 defmodule PecaComponent.Table.TableHeader do
-  use PecaComponent, :live
+  use Phoenix.LiveComponent
 
   def mount(socket) do
     socket =

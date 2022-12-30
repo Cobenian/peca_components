@@ -1,5 +1,6 @@
 defmodule PecaComponent.Table.TRow do
-  use PecaComponent, :functional
+  use Phoenix.Component
+  # use PecaComponent, :functional
 
   import PecaComponent.Table.TCell
 
