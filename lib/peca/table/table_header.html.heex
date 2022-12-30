@@ -1,0 +1,7 @@
+<th>
+    <%= if @inner_block do %>
+    <%= render_slot(@inner_block) %>
+    <% else %>
+    <%= @header.name %>
+    <% end %>
+</th>

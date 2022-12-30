@@ -1,0 +1,9 @@
+<tr>
+    <%= if @inner_block do %>
+    <%= render_slot(@inner_block) %>
+    <% else %>
+    <%= for {header,header_idx} <- Enum.with_index(@headers) do %>
+    <.live_component module={TableCell} id={"table-" <> @table_id <> "-row-" <> @row_id <> "-cell-" <> Integer.to_string(header_idx)} header={header} row={@row} />
+    <% end %>
+    <% end %>
+</tr>

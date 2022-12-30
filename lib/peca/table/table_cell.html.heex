@@ -1,0 +1,7 @@
+<td>
+    <%= if @inner_block do %>
+    <%= render_slot(@inner_block) %>
+    <% else %>
+    <%= @row.data[@header.value] %>
+    <% end %>
+</td>

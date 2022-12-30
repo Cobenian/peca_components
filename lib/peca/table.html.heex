@@ -1,0 +1,38 @@
+<div>
+    <!--
+    <.live_component module={Table} id="my-table">
+        <:table_head>
+        <thead>
+            <.tr>
+                <%= for {header,header_idx} <- Enum.with_index(@headers) do %>
+                <.live_component module={TableHeader} id={"table-" <> @table_id <> "-header-" <> Integer.to_string(header_idx)} header={header} />
+                <% end %>
+            </.tr>
+        </thead>
+        </:table_head>
+        
+
+        <tbody>
+        <%= for {row,row_idx} <- Enum.with_index(@rows) do %>
+        <.live_component module={TableRow} id={"table-" <> @table_id <> "-row-" <> Integer.to_string(row_idx)} table_id={@table_id} row_id={Integer.to_string(row_idx)} headers={@headers} row={row} />
+        <% end %>
+        </tbody>
+    </.live_component>
+    -->
+
+    <.table_table>
+        <:table_head>
+            <thead>
+            <.table_header headers={@headers} sort_bys={@sort_bys} sort_target={@myself} />
+            </thead>
+        </:table_head>
+
+        <tbody>
+        <%= for {row,row_idx} <- Enum.with_index(@rows) do %>
+            <.table_row headers={@headers} row={row} custom_column={@custom_column}>
+
+            </.table_row>
+        <% end %>
+        </tbody>
+    </.table_table>
+</div>
