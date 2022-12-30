@@ -6,12 +6,12 @@ defmodule PecaComponent.Table.TRow do
 
   def table_row(assigns) do
     ~H"""
-    <.tr>
-    <%= for header <- assigns.headers do %>
+    <tr>
+      <%= for header <- assigns.headers do %>
         <.table_cell row={assigns.row} header={header} custom_column={assigns.custom_column}>
         </.table_cell>
-    <% end %>
-    </.tr>
+      <% end %>
+    </tr>
     """
   end
 end

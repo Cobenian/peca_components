@@ -10,13 +10,13 @@ defmodule PecaComponent.Table.TTable do
 
     ~H"""
     <div class="overflow-x-auto">
-        <.table class="table-auto">
-            <%= render_slot(@table_head) %>
-            <%= render_slot(@inner_block) %>
-            <%= if @table_foot do %>
-            <%= render_slot(@table_foot) %>
-            <% end %>
-        </.table>
+      <table class="table-auto">
+        <%= render_slot(@table_head) %>
+        <%= render_slot(@inner_block) %>
+        <%= if @table_foot do %>
+        <%= render_slot(@table_foot) %>
+        <% end %>
+      </table>
     </div>
     """
   end

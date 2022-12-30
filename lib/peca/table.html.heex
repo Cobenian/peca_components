@@ -1,5 +1,5 @@
 <div>
-    <!--
+    <%!--
     <.live_component module={Table} id="my-table">
         <:table_head>
         <thead>
@@ -18,7 +18,7 @@
         <% end %>
         </tbody>
     </.live_component>
-    -->
+    --%>
 
     <.table_table>
         <:table_head>
@@ -28,7 +28,7 @@
         </:table_head>
 
         <tbody>
-        <%= for {row,row_idx} <- Enum.with_index(@rows) do %>
+        <%= for row <- @rows do %>
             <.table_row headers={@headers} row={row} custom_column={@custom_column}>
 
             </.table_row>

@@ -13,13 +13,13 @@ defmodule PecaComponent.Table.TCell do
       end)
 
     ~H"""
-    <.td>
-    <%= if assigns.slot do %>
-    <%= render_slot(assigns.slot, assigns.row) %>
-    <% else %>
-    <%= Map.get(assigns.row, assigns.header.value) %>
-    <% end %>
-    </.td>
+    <td>
+      <%= if assigns.slot do %>
+        <%= render_slot(assigns.slot, assigns.row) %>
+      <% else %>
+        <%= Map.get(assigns.row, assigns.header.value) %>
+      <% end %>
+    </td>
     """
   end
 end

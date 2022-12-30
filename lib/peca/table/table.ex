@@ -1,8 +1,8 @@
 defmodule PecaComponent.Table.Table do
   use Phoenix.LiveComponent
 
-  alias PecaComponent.Table.TableHeader
-  alias PecaComponent.Table.TableRow
+  # alias PecaComponent.Table.TableHeader
+  # alias PecaComponent.Table.TableRow
 
   def mount(socket) do
     socket =

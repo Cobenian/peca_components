@@ -2,7 +2,7 @@ defmodule PecaComponent.Table.THeader do
   use Phoenix.Component
   # use PecaComponent, :functional
 
-  import PecaComponent.Table.TCell
+  # import PecaComponent.Table.TCell
 
   require Logger
 
@@ -12,32 +12,42 @@ defmodule PecaComponent.Table.THeader do
       |> assign_new(:sortable, fn -> false end)
 
     ~H"""
-    <.tr>
-    <%= for header <- assigns.headers do %>
-        <.th>
-            <%= if Map.get(header, :sortable) do %>
-                <!-- <%= assigns.sort_bys %> -->
-                <%= header.name %>
-                <.icon_button phx-click="sort_toggle" phx-value-header={header.value} phx-target={@sort_target} icon={toggle_icon(assigns.sort_bys, as_str(header.value))}/>
-                <!--
-                <%= if asc?(assigns.sort_bys, as_str(header.value)) do %>
-                    <Heroicons.Outline.sort_ascending />
+    <tr>
+      <%= for header <- assigns.headers do %>
+        <th>
+          <%= if Map.get(header, :sortable) do %>
+            <!-- <%= assigns.sort_bys %> -->
+            <%= header.name %>
+            <button phx-click="sort_toggle" phx-value-header={header.value} phx-target={@sort_target}>
+              <%= if toggle_icon(assigns.sort_bys, as_str(header.value)) == :sort_ascending do %>
+                <Heroicons.bars_arrow_up class="w-5 h-5" />
+              <% else %>
+                <%= if toggle_icon(assigns.sort_bys, as_str(header.value)) == :sort_descending do %>
+                  <Heroicons.bars_arrow_down class="w-5 h-5" />
                 <% else %>
-                    <%= if desc?(assigns.sort_bys, as_str(header.value)) do %>
-                        <Heroicons.Outline.sort_descending />
-                    <%= end %>
+                  <Heroicons.arrows_up_down class="w-5 h-5" />
                 <% end %>
-                -->
-                <!--
-                <.button phx-click="sort_asc" phx-value-header={header.value} phx-target={@sort_target}>Asc</.button>
-                <.button phx-click="sort_desc" phx-value-header={header.value} phx-target={@sort_target}>Desc</.button>
-                -->
+              <% end %>
+            </button>
+            <%!--
+            <%= if asc?(assigns.sort_bys, as_str(header.value)) do %>
+                <Heroicons.Outline.sort_ascending />
             <% else %>
-                <%= header.name %>
+                <%= if desc?(assigns.sort_bys, as_str(header.value)) do %>
+                    <Heroicons.Outline.sort_descending />
+                <%= end %>
             <% end %>
-        </.th>
-    <% end %>
-    </.tr>
+            --%>
+
+            <%!-- <.button phx-click="sort_asc" phx-value-header={header.value} phx-target={@sort_target}>Asc</.button>
+            <.button phx-click="sort_desc" phx-value-header={header.value} phx-target={@sort_target}>Desc</.button> --%>
+
+          <% else %>
+            <%= header.name %>
+          <% end %>
+        </th>
+      <% end %>
+    </tr>
     """
   end
 

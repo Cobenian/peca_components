@@ -1,9 +1,9 @@
 defmodule PecaComponent.Table do
   use Phoenix.LiveComponent
 
-  alias PecaComponent.Table.Table
-  alias PecaComponent.Table.TableHeader
-  alias PecaComponent.Table.TableRow
+  # alias PecaComponent.Table.Table
+  # alias PecaComponent.Table.TableHeader
+  # alias PecaComponent.Table.TableRow
 
   import PecaComponent.Table.TTable
   import PecaComponent.Table.THeader
@@ -14,7 +14,7 @@ defmodule PecaComponent.Table do
   def mount(socket) do
     socket =
       socket
-      |> assign_new(:table_id, fn -> Ecto.UUID.generate() end)
+      |> assign_new(:table_id, fn -> for _ <- 1..10, into: "", do: <<Enum.random('0123456789abcdef')>> end)
       |> assign_new(:sort_bys, fn -> [] end)
       # |> assign_new(:custom_sort, fn ->
       #   fn items, _sort_bys -> items end
