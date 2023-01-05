@@ -1,6 +1,10 @@
 defmodule PecaComponent.Table.TCell do
   use Phoenix.Component
-  # use PecaComponent, :functional
+
+  import PecaComponent.Table.THelpers
+
+  attr :class, :string, default: ""
+  attr :rest, :global, include: ~w(colspan headers rowspan)
 
   def table_cell(assigns) do
     assigns =
@@ -13,7 +17,18 @@ defmodule PecaComponent.Table.TCell do
       end)
 
     ~H"""
-    <td>
+    <td
+      class={
+        build_class(
+          [
+            "px-6 py-4 text-sm",
+            @class
+          ],
+          " "
+        )
+      }
+      {@rest}
+    >
       <%= if assigns.slot do %>
         <%= render_slot(assigns.slot, assigns.row) %>
       <% else %>

@@ -1,10 +1,14 @@
 defmodule PecaComponent.Table.THeader do
   use Phoenix.Component
-  # use PecaComponent, :functional
 
   # import PecaComponent.Table.TCell
+  import PecaComponent.Table.THelpers
 
   require Logger
+
+  attr(:class, :string, default: "")
+  attr(:rest, :global)
+  slot(:inner_block, required: false)
 
   def table_header(assigns) do
     assigns =
@@ -14,7 +18,18 @@ defmodule PecaComponent.Table.THeader do
     ~H"""
     <tr>
       <%= for header <- assigns.headers do %>
-        <th>
+        <th
+          class={
+            build_class(
+              [
+                "px-6 py-3 text-xs font-medium text-left uppercase",
+                @class
+              ],
+              " "
+            )
+          }
+          {@rest}
+        >
           <%= if Map.get(header, :sortable) do %>
             <!-- <%= assigns.sort_bys %> -->
             <%= header.name %>

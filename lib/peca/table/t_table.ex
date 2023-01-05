@@ -1,6 +1,11 @@
 defmodule PecaComponent.Table.TTable do
   use Phoenix.Component
-  # use PecaComponent, :functional
+
+  import PecaComponent.Table.THelpers
+
+  attr(:class, :string, default: "")
+  attr(:rest, :global)
+  slot(:inner_block, required: false)
 
   def table_table(assigns) do
     assigns =
@@ -10,7 +15,15 @@ defmodule PecaComponent.Table.TTable do
 
     ~H"""
     <div class="overflow-x-auto">
-      <table class="table-auto">
+      <table
+        class={
+          build_class([
+            "min-w-full overflow-hidden divide-y rounded-sm table-autosm:rounded",
+            @class
+          ])
+        }
+        {@rest}
+      >
         <%= render_slot(@table_head) %>
         <%= render_slot(@inner_block) %>
         <%= if @table_foot do %>
