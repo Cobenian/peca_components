@@ -18,7 +18,7 @@ defmodule PecaComponent.Table.TTable do
       <table
         class={
           build_class([
-            "min-w-full overflow-hidden divide-y rounded-sm table-autosm:rounded",
+            "min-w-full overflow-hidden divide-y rounded-sm table-auto sm:rounded",
             @class
           ])
         }
